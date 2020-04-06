@@ -7,14 +7,16 @@ interface YoutubePlayerProps {
   VideoID: string;
 }
 
-const YoutubePlayer: React.FC<YoutubePlayerProps> = ({ VideoID }) => (
-  <YoutubePlayerWrapper
-    src={BASE_URI + VideoID}
-    frameBorder="0"
-    allow="autoplay; encrypted-media"
-    allowFullScreen
-    title="video"
-  ></YoutubePlayerWrapper>
-);
+const YoutubePlayer: React.FC<YoutubePlayerProps> = ({ VideoID }) => {
+  return VideoID ? (
+    <YoutubePlayerWrapper
+      src={BASE_URI + VideoID}
+      frameBorder="0"
+      allow="autoplay; encrypted-media"
+      allowFullScreen
+      title="video"
+    ></YoutubePlayerWrapper>
+  ) : null;
+};
 
 export default YoutubePlayer;

@@ -1,10 +1,10 @@
 import React from "react";
-import YoutubePlayer from "./components/YoutubePlayer";
+import YoutubePlayerContainer from "./containers/YoutubePlayerContainer";
 
 function App() {
   return (
     <div className="App">
-      <YoutubePlayer VideoID="jiDuOnfYZS8"></YoutubePlayer>
+      <YoutubePlayerContainer></YoutubePlayerContainer>
     </div>
   );
 }

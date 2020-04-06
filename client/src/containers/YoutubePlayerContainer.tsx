@@ -6,8 +6,18 @@ const YoutubePlayerContainer: React.FC = () => {
   const [videoID, setVideoID] = useState("");
 
   return (
-    <YoutubePlayerContainerWrapper>
-      <YoutubePlayer VideoID={videoID}></YoutubePlayer>
-    </YoutubePlayerContainerWrapper>
+    <React.Fragment>
+      <YoutubePlayerContainerWrapper>
+        <YoutubePlayer VideoID={videoID}></YoutubePlayer>
+      </YoutubePlayerContainerWrapper>
+      <h1>Enter your video ID</h1>
+      <input
+        value={videoID}
+        type="text"
+        onChange={(e) => setVideoID(e.target.value)}
+      />
+    </React.Fragment>
   );
 };
+
+export default YoutubePlayerContainer;
