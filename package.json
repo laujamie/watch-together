@@ -1,0 +1,13 @@
+{
+  "name": "watch-together",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "scripts": {
+    "start": "cd server && yarn run start",
+    "dev": "concurrently \"cd server && yarn run dev\" \"cd client && yarn run start\""
+  }
+}
