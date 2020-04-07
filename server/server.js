@@ -16,6 +16,15 @@ const corsOptions = { origin: process.env.CORS_DOMAIN };
 app.use(cors(corsOptions));
 app.use("/", indexRouter);
 
+io.on("connection", (socket) => {
+  socket.on("pause", () => {
+    socket.broadcast.emit("pause");
+  });
+  socket.on("play", () => {
+    socket.broadcast.emit("play");
+  });
+});
+
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
