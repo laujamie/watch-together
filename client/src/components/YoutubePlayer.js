@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { pause, play } from "../services/Socket";
 
 const YT_API_URI = "https://www.youtube.com/iframe_api";
 
 class YoutubePlayer extends React.Component {
   static propTypes = {
-    videoId: PropTypes.string.isRequired,
+    videoId: PropTypes.string.isRequired
   };
 
   componentDidMount() {
@@ -22,19 +23,37 @@ class YoutubePlayer extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.videoId !== prevProps.videoId) {
+      this.loadVideo();
+    }
+  }
+
   loadVideo = () => {
     const { videoId } = this.props;
 
     this.player = new window.YT.Player(`youtube-player-${videoId}`, {
       videoId: videoId,
       events: {
-        onReady: this.onPlayerReady,
-      },
+        onStateChange: this.handleSock
+      }
     });
   };
 
   onPlayerReady(e) {
     e.target.playVideo();
+  }
+
+  handleSock(e) {
+    const code = e.data;
+    if (
+      code === window.YT.PlayerState.BUFFERING ||
+      code === window.YT.PlayerState.PLAYING
+    ) {
+      play();
+    } else if (code === window.YT.PlayerState.PAUSED) {
+      pause();
+    }
   }
 
   render() {

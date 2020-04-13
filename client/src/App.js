@@ -1,11 +1,11 @@
 import React from "react";
-import test from "./services/Socket";
+import YoutubePlayerContainer from "./containers/YoutubePlayerContainer";
 
 function App() {
   return (
     <div className="App">
       <h1>Hello World!</h1>
-      <button onClick={test}>Test</button>
+      <YoutubePlayerContainer></YoutubePlayerContainer>
     </div>
   );
 }

@@ -10,6 +10,10 @@ export const play = () => {
   socket.emit("play");
 };
 
+export const loadVideo = (videoId) => {
+  socket.emit("video id", videoId);
+};
+
 socket.on("play", () => {
   console.log("play");
 });
