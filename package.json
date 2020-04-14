@@ -9,6 +9,6 @@
   "scripts": {
     "start": "cd server && yarn run start",
     "dev": "concurrently \"cd server && yarn run dev\" \"cd client && yarn run start\"",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build && cd ../server && npm install"
   }
 }
