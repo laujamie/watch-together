@@ -18,8 +18,6 @@ socket.on("play", () => {
   console.log("play");
 });
 
-const test = () => {
-  socket.emit("lmoa");
+export const subscribeToSocket = (cb) => {
+  socket.on("video id", (videoId) => cb(null, videoId));
 };
-
-export default test;

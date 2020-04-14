@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import YoutubePlayer from "../components/YoutubePlayer";
-import { loadVideo } from "../services/Socket";
+import { loadVideo, subscribeToSocket } from "../services/Socket";
 
 const YoutubePlayerContainer = () => {
   const [videoId, setVideoId] = useState("");
+
+  useEffect(() => {
+    subscribeToSocket((err, id) => setVideoId(id));
+  }, []);
 
   const handleChange = (e) => {
     setVideoId(e.target.value);
