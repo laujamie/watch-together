@@ -14,7 +14,6 @@ const indexRouter = require("./routes/index");
 const corsOptions = { origin: process.env.CORS_DOMAIN };
 
 app.use(cors(corsOptions));
-app.use("/", indexRouter);
 
 app.use(express.static("../client/build"));
 
