@@ -16,12 +16,18 @@ const corsOptions = { origin: process.env.CORS_DOMAIN };
 app.use(cors(corsOptions));
 app.use("/", indexRouter);
 
+app.use(express.static("../client/build"));
+
 io.on("connection", (socket) => {
   socket.on("pause", () => {
     socket.broadcast.emit("pause");
   });
   socket.on("play", () => {
     socket.broadcast.emit("play");
+    console.log("played");
+  });
+  socket.on("video id", (videoId) => {
+    socket.broadcast.emit("video id", videoId);
   });
 });
 
