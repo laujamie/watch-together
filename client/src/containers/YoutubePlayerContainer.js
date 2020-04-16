@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import YoutubePlayer from "../components/YoutubePlayer";
-import { loadVideo, subscribeToVideoId } from "../services/Socket";
+import React, { useState, useEffect } from 'react';
+import YoutubePlayer from '../components/YoutubePlayer';
+import { loadVideo, subscribeToVideoId } from '../services/Socket';
 
 const YoutubePlayerContainer = () => {
-  const [videoId, setVideoId] = useState("");
+  const [videoId, setVideoId] = useState('');
 
   useEffect(() => {
     subscribeToVideoId((err, id) => setVideoId(id));

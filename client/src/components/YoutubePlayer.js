@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   pause,
   play,
   subscribeToVideoPause,
   subscribeToVideoPlay
-} from "../services/Socket";
+} from '../services/Socket';
 
-const YT_API_URI = "https://www.youtube.com/iframe_api";
+const YT_API_URI = 'https://www.youtube.com/iframe_api';
 
 class YoutubePlayer extends React.Component {
   static propTypes = {
@@ -16,12 +16,12 @@ class YoutubePlayer extends React.Component {
 
   componentDidMount() {
     if (!window.YT) {
-      const tag = document.createElement("script");
+      const tag = document.createElement('script');
       tag.src = YT_API_URI;
 
       window.onYouTubeIframeAPIReady = this.loadVideo;
 
-      const firstScriptTag = document.getElementsByTagName("script")[0];
+      const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     } else {
       this.loadVideo();

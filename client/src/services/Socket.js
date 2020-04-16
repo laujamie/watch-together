@@ -1,27 +1,27 @@
-import io from "socket.io-client";
+import io from 'socket.io-client';
 
 const socket = io();
 
 export const pause = () => {
-  socket.emit("pause");
+  socket.emit('pause');
 };
 
 export const play = () => {
-  socket.emit("play");
+  socket.emit('play');
 };
 
 export const loadVideo = (videoId) => {
-  socket.emit("video id", videoId);
+  socket.emit('video id', videoId);
 };
 
 export const subscribeToVideoId = (cb) => {
-  socket.on("video id", (videoId) => cb(null, videoId));
+  socket.on('video id', (videoId) => cb(null, videoId));
 };
 
 export const subscribeToVideoPlay = (cb) => {
-  socket.on("play", () => cb());
+  socket.on('play', () => cb());
 };
 
 export const subscribeToVideoPause = (cb) => {
-  socket.on("pause", () => cb());
+  socket.on('pause', () => cb());
 };
