@@ -14,10 +14,14 @@ export const loadVideo = (videoId) => {
   socket.emit("video id", videoId);
 };
 
-socket.on("play", () => {
-  console.log("play");
-});
-
-export const subscribeToSocket = (cb) => {
+export const subscribeToVideoId = (cb) => {
   socket.on("video id", (videoId) => cb(null, videoId));
+};
+
+export const subscribeToVideoPlay = (cb) => {
+  socket.on("play", () => cb());
+};
+
+export const subscribeToVideoPause = (cb) => {
+  socket.on("pause", () => cb());
 };

@@ -1,6 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { pause, play } from "../services/Socket";
+import {
+  pause,
+  play,
+  subscribeToVideoPause,
+  subscribeToVideoPlay
+} from "../services/Socket";
 
 const YT_API_URI = "https://www.youtube.com/iframe_api";
 
@@ -35,14 +40,20 @@ class YoutubePlayer extends React.Component {
     this.player = new window.YT.Player(`youtube-player-${videoId}`, {
       videoId: videoId,
       events: {
+        onReady: this.onPlayerReady,
         onStateChange: this.handleSock
       }
     });
   };
 
-  onPlayerReady(e) {
-    e.target.playVideo();
-  }
+  onPlayerReady = (e) => {
+    subscribeToVideoPause(() => {
+      this.player.pauseVideo();
+    });
+    subscribeToVideoPlay(() => {
+      this.player.playVideo();
+    });
+  };
 
   handleSock(e) {
     const code = e.data;
