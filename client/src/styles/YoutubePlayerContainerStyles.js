@@ -20,6 +20,10 @@ export const YoutubeIDInput = styled(TextField)`
   && {
     margin-top: 0.5em;
     font-family: inherit;
+
+    &:hover {
+      color: #c4302b;
+    }
   }
 `;
 
