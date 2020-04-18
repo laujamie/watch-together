@@ -6,6 +6,7 @@ import {
   subscribeToVideoPause,
   subscribeToVideoPlay
 } from '../services/Socket';
+import { YoutubePlayerWrapper } from '../styles/YoutubePlayerStyles';
 
 const YT_API_URI = 'https://www.youtube.com/iframe_api';
 
@@ -70,9 +71,11 @@ class YoutubePlayer extends React.Component {
   render() {
     const { videoId } = this.props;
     return videoId ? (
-      <div>
-        <div id={`youtube-player-${videoId}`}></div>
-      </div>
+      <YoutubePlayerWrapper>
+        <div>
+          <div id={`youtube-player-${videoId}`}></div>
+        </div>
+      </YoutubePlayerWrapper>
     ) : null;
   }
 }
