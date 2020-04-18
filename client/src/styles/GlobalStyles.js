@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
   }
+
+  label {
+    font-family: inherit
+  }
 `;
 
 export default GlobalStyle;
