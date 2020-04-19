@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -20,5 +21,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: inherit
   }
 `;
+
+export const watchTogetherTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#272343'
+    }
+  }
+});
 
 export default GlobalStyle;
