@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Container } from '@material-ui/core';
 
 export const YoutubePlayerContainerHeader = styled.h1`
   font-size: 1.8em;
@@ -12,8 +12,8 @@ export const YoutubePlayerContainerText = styled.p`
   padding: 0;
 `;
 
-export const YoutubePlayerContainerWrapper = styled.div`
-  padding: 1em 2em;
+export const YoutubePlayerContainerWrapper = styled(Container)`
+  text-align: center;
 `;
 
 export const YoutubeIDInput = styled(TextField)`

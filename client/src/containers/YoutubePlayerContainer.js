@@ -43,7 +43,14 @@ const YoutubePlayerContainer = () => {
         Enter a video id into the textbox to get started:
       </YoutubePlayerContainerText>
       <Grid container>
-        <Grid container item xs={12} alignItems="flex-end" spacing={2}>
+        <Grid
+          container
+          item
+          xs={12}
+          alignItems="flex-end"
+          justify="center"
+          spacing={2}
+        >
           <Grid item>
             <YoutubeIDInput
               label="Video ID"
