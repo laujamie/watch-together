@@ -15,7 +15,6 @@ export const YoutubePlayerContainerText = styled.p`
 export const YoutubePlayerContainerWrapper = styled(Container)`
   text-align: center;
   padding: 4em 6em;
-  background-color: #ffea0f;
   margin: 0;
   max-width: 100%;
   color: #0a202d;

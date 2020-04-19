@@ -66,13 +66,17 @@ class YoutubePlayer extends React.Component {
       this.player.playVideo();
     });
     subscribeToTimestamp((timestamp) => {
-      this.setTimestamp(timestamp);
+      this.player.seekTo(timestamp);
     });
   };
 
   setTimestamp = (timestamp = 0) => {
-    this.player.seekTo(timestamp, true);
+    // this.player.seekTo(timestamp);
     timestampChange(timestamp);
+  };
+
+  handleRestart = () => {
+    this.setTimestamp();
   };
 
   handleSock(e) {
@@ -99,6 +103,16 @@ class YoutubePlayer extends React.Component {
                   <div id={`youtube-player-${videoId}`}></div>
                 </YoutubeIFrameWrapperIn>
               </YoutubeIFrameWrapper>
+            </Grid>
+            <Grid item xs={12}>
+              <RestartButton
+                startIcon={<RotateLeftIcon />}
+                onClick={this.handleRestart}
+                color="primary"
+                variant="contained"
+              >
+                Restart
+              </RestartButton>
             </Grid>
           </Grid>
         </div>
