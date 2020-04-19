@@ -25,3 +25,11 @@ export const subscribeToVideoPlay = (cb) => {
 export const subscribeToVideoPause = (cb) => {
   socket.on('pause', () => cb());
 };
+
+export const timestampChange = (timestamp) => {
+  socket.emit('timestamp', timestamp);
+};
+
+export const subscribeToTimestamp = (cb) => {
+  socket.on('timestamp', (timestamp) => cb(timestamp));
+};
