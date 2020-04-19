@@ -16,7 +16,10 @@ const YoutubePlayerContainer = () => {
   const [liveVideoId, setLiveVideoId] = useState('');
 
   useEffect(() => {
-    subscribeToVideoId((err, id) => setVideoId(id));
+    subscribeToVideoId((err, id) => {
+      setVideoId(id);
+      setLiveVideoId(id);
+    });
   }, []);
 
   useEffect(() => {
