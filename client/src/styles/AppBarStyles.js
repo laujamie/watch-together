@@ -15,7 +15,7 @@ export const AppBarWrapper = styled(({ disableGutters, ...other }) => (
 ))`
   padding: 1em 4em;
 
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 600px) {
     padding: 1em 2em;
   }
 `;
@@ -25,7 +25,7 @@ export const AppBarLink = styled(({ color, ...other }) => (
 ))`
   font-family: inherit;
   margin-left: 1em;
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 600px) {
     display: none;
   }
 `;

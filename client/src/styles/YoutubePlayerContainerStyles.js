@@ -1,13 +1,17 @@
+import React from 'react';
 import styled from 'styled-components';
-import { TextField, Button, Container } from '@material-ui/core';
+import { TextField, Button, Container, Typography } from '@material-ui/core';
 
-export const YoutubePlayerContainerHeader = styled.h1`
-  font-size: 1.8em;
+export const YoutubePlayerContainerHeader = styled(({ variant, ...other }) => (
+  <Typography variant="h3" {...other} />
+))`
   margin: 0;
   padding: 0;
 `;
 
-export const YoutubePlayerContainerText = styled.p`
+export const YoutubePlayerContainerText = styled(({ variant, ...other }) => (
+  <Typography variant="subtitle1" {...other} />
+))`
   margin: 0;
   padding: 0;
 `;

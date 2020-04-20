@@ -1,10 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const GlobalStyle = createGlobalStyle`
   html {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%;
   }
   *, *:before, *:after {
     -webkit-box-sizing: inherit;
@@ -22,15 +24,25 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const watchTogetherTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#222831'
+export const watchTogetherTheme = responsiveFontSizes(
+  createMuiTheme({
+    palette: {
+      primary: {
+        main: '#222831'
+      },
+      secondary: {
+        main: '#00adb5',
+        contrastText: '#eeeeee'
+      },
+      background: {
+        default: '#393e46'
+      }
     },
-    secondary: {
-      main: '#393E46'
+    typography: {
+      fontFamily: ['"Open Sans"', 'sans-serif'].join(','),
+      fontSize: 16
     }
-  }
-});
+  })
+);
 
 export default GlobalStyle;

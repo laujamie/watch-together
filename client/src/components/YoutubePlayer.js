@@ -108,7 +108,7 @@ class YoutubePlayer extends React.Component {
               <RestartButton
                 startIcon={<RotateLeftIcon />}
                 onClick={this.handleRestart}
-                color="primary"
+                color="secondary"
                 variant="contained"
               >
                 Restart

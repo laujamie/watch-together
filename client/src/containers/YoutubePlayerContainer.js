@@ -39,7 +39,7 @@ const YoutubePlayerContainer = () => {
 
   return (
     <YoutubePlayerContainerWrapper>
-      <YoutubePlayerContainerHeader variant="h1">
+      <YoutubePlayerContainerHeader color="primary">
         Welcome to WatchTogether!
       </YoutubePlayerContainerHeader>
       <YoutubePlayerContainerText>
