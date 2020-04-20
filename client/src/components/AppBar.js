@@ -1,17 +1,31 @@
 import React from 'react';
-import { AppBar, Button } from '@material-ui/core';
-import { LogoWrapper, AppBarWrapper } from '../styles/AppBarStyles';
+import {
+  LogoWrapper,
+  AppBarWrapper,
+  AppBarLink,
+  LogoLink,
+  StyledAppBar
+} from '../styles/AppBarStyles';
+import { Link } from 'react-router-dom';
 
 const MainAppBar = () => {
   return (
-    <AppBar position="static">
+    <StyledAppBar position="static">
       <AppBarWrapper>
-        <LogoWrapper>WatchTogether</LogoWrapper>
-        <Button color="inherit" style={{ fontFamily: 'inherit' }}>
-          Log In
-        </Button>
+        <LogoWrapper>
+          <LogoLink to="/">WatchTogether</LogoLink>
+        </LogoWrapper>
+        <AppBarLink component={Link} to="/">
+          Home
+        </AppBarLink>
+        <AppBarLink component={Link} to="/about">
+          About
+        </AppBarLink>
+        <AppBarLink component={Link} to="/app">
+          Watch
+        </AppBarLink>
       </AppBarWrapper>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 

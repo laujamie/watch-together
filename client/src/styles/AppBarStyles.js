@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography, Toolbar } from '@material-ui/core';
+import { Typography, Toolbar, Button, AppBar } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export const LogoWrapper = styled(({ ...props }) => (
   <Typography variant="h6" {...props} />
@@ -17,4 +18,23 @@ export const AppBarWrapper = styled(({ disableGutters, ...other }) => (
   @media only screen and (max-width: 700px) {
     padding: 1em 2em;
   }
+`;
+
+export const AppBarLink = styled(({ color, ...other }) => (
+  <Button color="inherit" {...other} />
+))`
+  font-family: inherit;
+  margin-left: 1em;
+  @media only screen and (max-width: 700px) {
+    display: none;
+  }
+`;
+
+export const LogoLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
+export const StyledAppBar = styled(AppBar)`
+  z-index: ${(props) => props.theme.zIndex.drawer + 1};
 `;

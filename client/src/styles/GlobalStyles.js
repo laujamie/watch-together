@@ -25,7 +25,10 @@ const GlobalStyle = createGlobalStyle`
 export const watchTogetherTheme = createMuiTheme({
   palette: {
     primary: {
-      main: '#272343'
+      main: '#222831'
+    },
+    secondary: {
+      main: '#393E46'
     }
   }
 });
