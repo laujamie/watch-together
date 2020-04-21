@@ -16,10 +16,6 @@ const Home = () => {
           Watch Now
         </Button>
       </HeroWrapper>
-      <Container>
-        <Typography variant="h3">Low-latency</Typography>
-        <Typography variant="body1">Big lmao</Typography>
-      </Container>
     </div>
   );
 };
