@@ -1,6 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Typography, Toolbar, Button, AppBar } from '@material-ui/core';
+import {
+  Typography,
+  Toolbar,
+  Button,
+  AppBar,
+  Drawer,
+  IconButton
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 
 export const LogoWrapper = styled(({ ...props }) => (
@@ -37,4 +45,27 @@ export const LogoLink = styled(Link)`
 
 export const StyledAppBar = styled(AppBar)`
   z-index: ${(props) => props.theme.zIndex.drawer + 1};
+`;
+
+export const DrawerButton = styled((props) => (
+  <IconButton {...props}>
+    <MenuIcon></MenuIcon>
+  </IconButton>
+))`
+  display: none;
+  @media only screen and (max-width: 600px) {
+    display: block;
+    margin-right: 0.5rem;
+  }
+`;
+
+export const AppDrawer = styled(Drawer)`
+  width: 100%;
+  ${({ toggle }) => {
+    if (toggle) {
+      return `display: block`;
+    } else {
+      return `display: none`;
+    }
+  }}
 `;
