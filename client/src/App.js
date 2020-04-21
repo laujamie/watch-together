@@ -3,7 +3,7 @@ import { StylesProvider } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
-import { Home, About } from './pages';
+import { Home } from './pages';
 import YoutubePlayerContainer from './containers/YoutubePlayerContainer';
 import GlobalStyle, { watchTogetherTheme } from './styles/GlobalStyles';
 import MainAppBar from './components/AppBar';
@@ -22,9 +22,6 @@ function App() {
               <Switch>
                 <Route path="/app">
                   <YoutubePlayerContainer />
-                </Route>
-                <Route path="/about">
-                  <About />
                 </Route>
                 <Route path="/">
                   <Home />
