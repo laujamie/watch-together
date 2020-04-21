@@ -18,11 +18,19 @@ import {
 } from '../styles/YoutubePlayerStyles';
 
 const YT_API_URI = 'https://www.youtube.com/iframe_api';
+const CHECK_INTERVAL = 1000;
 
 class YoutubePlayer extends React.Component {
   static propTypes = {
     videoId: PropTypes.string.isRequired
   };
+
+  constructor(props) {
+    super(props);
+    this.prevTime = undefined;
+    this.videoTimeout = undefined;
+    this.blockStateSend = false;
+  }
 
   componentDidMount() {
     if (!window.YT) {
@@ -37,6 +45,11 @@ class YoutubePlayer extends React.Component {
       this.loadVideo();
     }
   }
+
+  componentWillUnmount = () => {
+    if (typeof this.videoTimeout !== 'undefined')
+      clearTimeout(this.videoTimeout);
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props.videoId !== prevProps.videoId) {
@@ -66,8 +79,11 @@ class YoutubePlayer extends React.Component {
       this.player.playVideo();
     });
     subscribeToTimestamp((timestamp) => {
+      this.blockStateSend = true;
+      this.prevTime = timestamp; // hopefully prevent desync
       this.player.seekTo(timestamp);
     });
+    setTimeout(this.trackPlayer, CHECK_INTERVAL);
   };
 
   setTimestamp = (timestamp = 0) => {
@@ -76,20 +92,49 @@ class YoutubePlayer extends React.Component {
   };
 
   handleRestart = () => {
+    this.player.seekTo(0);
+    this.prevTime = 0;
     this.setTimestamp();
   };
 
-  handleSock(e) {
+  handleSock = (e) => {
     const code = e.data;
     if (
       code === window.YT.PlayerState.BUFFERING ||
       code === window.YT.PlayerState.PLAYING
     ) {
       play();
-    } else if (code === window.YT.PlayerState.PAUSED) {
+      this.blockStateSend = false;
+    } else if (code === window.YT.PlayerState.PAUSED && !this.blockStateSend) {
       pause();
     }
-  }
+  };
+
+  trackPlayer = () => {
+    if (this.prevTime) {
+      if (
+        this.player.getPlayerState() === window.YT.PlayerState.PLAYING ||
+        this.player.getPlayerState() === window.YT.PlayerState.BUFFERING
+      ) {
+        if (this.blockStateSend) {
+          this.blockStateSend = false;
+          this.prevTime = this.player.getCurrentTime();
+          this.videoTimeout = setTimeout(this.trackPlayer, CHECK_INTERVAL);
+          return;
+        }
+        const curTime = this.player.getCurrentTime();
+        const CHECK_INTERVAL_SECS = CHECK_INTERVAL / 1000;
+        if (
+          Math.abs(curTime - this.prevTime - CHECK_INTERVAL_SECS) >
+          CHECK_INTERVAL_SECS * 1.25
+        ) {
+          this.setTimestamp(curTime);
+        }
+      }
+    }
+    this.prevTime = this.player.getCurrentTime();
+    this.videoTimeout = setTimeout(this.trackPlayer, CHECK_INTERVAL);
+  };
 
   render() {
     const { videoId } = this.props;
