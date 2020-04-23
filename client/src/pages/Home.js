@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeroWrapper } from '../styles/pages/HomeStyles';
+import { HeroWrapper, FeatureCard } from '../styles/pages/HomeStyles';
 import { Container } from '../styles/pages';
 import { Typography, Button, Grid, Card, CardContent } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -30,17 +30,24 @@ const Home = () => {
         </Grid>
       </HeroWrapper>
       <Container style={{ background: '#eee' }}>
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid item>
             <Typography variant="h4">Features</Typography>
-            <Grid container spacing={3}>
-              <Grid item>
-                <Card>
-                  <CardContent>
-                    <p>This is a test</p>
-                  </CardContent>
-                </Card>
-              </Grid>
+          </Grid>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={4}>
+              <FeatureCard>
+                <CardContent>
+                  <p>This is a test</p>
+                </CardContent>
+              </FeatureCard>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <FeatureCard>
+                <CardContent>
+                  <p>This is a test</p>
+                </CardContent>
+              </FeatureCard>
             </Grid>
           </Grid>
         </Grid>
