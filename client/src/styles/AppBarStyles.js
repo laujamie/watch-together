@@ -6,7 +6,8 @@ import {
   Button,
   AppBar,
   Drawer,
-  IconButton
+  IconButton,
+  List
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
@@ -16,6 +17,9 @@ export const LogoWrapper = styled(({ ...props }) => (
 ))`
   font-variant: small-caps;
   flex-grow: 1;
+  @media only screen and (max-width: 600px) {
+    align-self: center;
+  }
 `;
 
 export const AppBarWrapper = styled(({ disableGutters, ...other }) => (
@@ -57,6 +61,8 @@ export const AppDrawer = styled(({ toggle, ...other }) => (
   <Drawer {...other} />
 ))`
   width: 100%;
+  background: #393e46;
+  color: #eee;
   ${({ toggle }) => {
     if (toggle === true) {
       return `display: block`;
@@ -64,4 +70,9 @@ export const AppDrawer = styled(({ toggle, ...other }) => (
       return `display: none`;
     }
   }}
+`;
+
+export const DrawerLinkWrapper = styled(List)`
+  padding-left: 2em;
+  padding-right: 2em;
 `;

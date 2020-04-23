@@ -6,40 +6,45 @@ import {
   LogoLink,
   StyledAppBar,
   AppDrawer,
-  DrawerButton
+  DrawerButton,
+  DrawerLinkWrapper
 } from '../styles/AppBarStyles';
-import { List, ListItem, Toolbar, Button } from '@material-ui/core';
+import { ListItem, Toolbar, Collapse } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {
-    width: 'inherit'
+    width: 'inherit',
+    background: 'inherit',
+    color: 'inherit'
   }
 }));
 
 const MobileMenu = ({ open, toggleOpen }) => {
   const classes = useStyles();
   return (
-    <AppDrawer
-      open={open}
-      anchor="top"
-      variant="permanent"
-      toggle={open}
-      classes={{ paper: classes.drawerPaper }}
-    >
-      <Toolbar />
-      <div style={{ overflow: 'auto' }}>
-        <List onClick={toggleOpen}>
-          <ListItem button component={Link} to="/">
-            Home
-          </ListItem>
-          <ListItem button component={Link} to="/app">
-            Watch
-          </ListItem>
-        </List>
-      </div>
-    </AppDrawer>
+    <Collapse in={open}>
+      <AppDrawer
+        open={open}
+        anchor="top"
+        variant="permanent"
+        toggle={open}
+        classes={{ paper: classes.drawerPaper }}
+      >
+        <Toolbar />
+        <div style={{ overflow: 'auto' }}>
+          <DrawerLinkWrapper onClick={toggleOpen}>
+            <ListItem button component={Link} to="/" disableGutters>
+              Home
+            </ListItem>
+            <ListItem button component={Link} to="/app" disableGutters>
+              Watch
+            </ListItem>
+          </DrawerLinkWrapper>
+        </div>
+      </AppDrawer>
+    </Collapse>
   );
 };
 
@@ -52,14 +57,8 @@ const MainAppBar = () => {
 
   return (
     <>
-      <StyledAppBar position="fixed">
+      <StyledAppBar position="relative">
         <AppBarWrapper>
-          <DrawerButton
-            color="inherit"
-            aria-label="open menu"
-            edge="start"
-            onClick={toggleOpen}
-          />
           <LogoWrapper>
             <LogoLink to="/">WatchTogether</LogoLink>
           </LogoWrapper>
@@ -69,6 +68,12 @@ const MainAppBar = () => {
           <AppBarLink component={Link} to="/app">
             Watch
           </AppBarLink>
+          <DrawerButton
+            color="inherit"
+            aria-label="open menu"
+            edge="start"
+            onClick={toggleOpen}
+          />
         </AppBarWrapper>
       </StyledAppBar>
       <MobileMenu open={isOpen} toggleOpen={toggleOpen}></MobileMenu>
