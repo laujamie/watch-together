@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { Home, RoomLanding } from './pages';
+import { Main } from './styles/MainStyles';
+import Footer from './components/Footer';
 import YoutubePlayerContainer from './containers/YoutubePlayerContainer';
 import GlobalStyle, { watchTogetherTheme } from './styles/GlobalStyles';
 import MainAppBar from './components/AppBar';
@@ -16,7 +18,7 @@ function App() {
           <GlobalStyle></GlobalStyle>
           <Router>
             <MainAppBar></MainAppBar>
-            <main>
+            <Main>
               <Switch>
                 <Route path="/app">
                   <YoutubePlayerContainer />
@@ -28,7 +30,7 @@ function App() {
                   <Home />
                 </Route>
               </Switch>
-            </main>
+            </Main>
           </Router>
         </ThemeProvider>
       </MuiThemeProvider>
