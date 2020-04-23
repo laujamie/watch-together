@@ -1,9 +1,12 @@
 import React from 'react';
-import { HeroWrapper, FeatureCard } from '../styles/pages/HomeStyles';
+import {
+  HeroWrapper,
+  FeatureCard,
+  HeroImageWrapper
+} from '../styles/pages/HomeStyles';
 import { Container } from '../styles/pages';
 import { Typography, Button, Grid, Card, CardContent } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { ReactComponent as HeroImage } from './assets/hero_image.svg';
 
 const Home = () => {
   return (
@@ -25,7 +28,7 @@ const Home = () => {
             </Button>
           </Grid>
           <Grid item xs={12} md={6}>
-            <HeroImage style={{ height: '100%', width: '100%' }} />
+            <HeroImageWrapper style={{ height: '100%', width: '100%' }} />
           </Grid>
         </Grid>
       </HeroWrapper>
