@@ -19,14 +19,8 @@ export const LogoWrapper = styled(({ ...props }) => (
 `;
 
 export const AppBarWrapper = styled(({ disableGutters, ...other }) => (
-  <Toolbar disableGutters {...other} />
-))`
-  padding: 1em 4em;
-
-  @media only screen and (max-width: 600px) {
-    padding: 1em 2em;
-  }
-`;
+  <Toolbar {...other} />
+))``;
 
 export const AppBarLink = styled(({ color, ...other }) => (
   <Button color="inherit" {...other} />
@@ -44,7 +38,7 @@ export const LogoLink = styled(Link)`
 `;
 
 export const StyledAppBar = styled(AppBar)`
-  z-index: ${(props) => props.theme.zIndex.drawer + 1};
+  z-index: 1201;
 `;
 
 export const DrawerButton = styled((props) => (
@@ -59,10 +53,12 @@ export const DrawerButton = styled((props) => (
   }
 `;
 
-export const AppDrawer = styled(Drawer)`
+export const AppDrawer = styled(({ toggle, ...other }) => (
+  <Drawer {...other} />
+))`
   width: 100%;
   ${({ toggle }) => {
-    if (toggle) {
+    if (toggle === true) {
       return `display: block`;
     } else {
       return `display: none`;

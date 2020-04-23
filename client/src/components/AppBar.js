@@ -8,22 +8,37 @@ import {
   AppDrawer,
   DrawerButton
 } from '../styles/AppBarStyles';
-import { List, ListItem } from '@material-ui/core';
+import { List, ListItem, Toolbar, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
 
-const MobileMenu = ({ toggle }) => {
+const useStyles = makeStyles((theme) => ({
+  drawerPaper: {
+    width: 'inherit'
+  }
+}));
+
+const MobileMenu = ({ open, toggleOpen }) => {
+  const classes = useStyles();
   return (
-    <AppDrawer toggle={toggle} anchor="top">
-      <List>
-        <ListItem>
-          <AppBarLink component={Link} to="/">
+    <AppDrawer
+      open={open}
+      anchor="top"
+      variant="permanent"
+      toggle={open}
+      classes={{ paper: classes.drawerPaper }}
+    >
+      <Toolbar />
+      <div style={{ overflow: 'auto' }}>
+        <List onClick={toggleOpen}>
+          <ListItem button component={Link} to="/">
             Home
-          </AppBarLink>
-          <AppBarLink component={Link} to="/app">
+          </ListItem>
+          <ListItem button component={Link} to="/app">
             Watch
-          </AppBarLink>
-        </ListItem>
-      </List>
+          </ListItem>
+        </List>
+      </div>
     </AppDrawer>
   );
 };
@@ -36,26 +51,28 @@ const MainAppBar = () => {
   };
 
   return (
-    <StyledAppBar position="static">
-      <AppBarWrapper>
-        <DrawerButton
-          color="inherit"
-          aria-label="open menu"
-          edge="start"
-          onClick={toggleOpen}
-        />
-        <MobileMenu toggle={isOpen}></MobileMenu>
-        <LogoWrapper>
-          <LogoLink to="/">WatchTogether</LogoLink>
-        </LogoWrapper>
-        <AppBarLink component={Link} to="/">
-          Home
-        </AppBarLink>
-        <AppBarLink component={Link} to="/app">
-          Watch
-        </AppBarLink>
-      </AppBarWrapper>
-    </StyledAppBar>
+    <>
+      <StyledAppBar position="fixed">
+        <AppBarWrapper>
+          <DrawerButton
+            color="inherit"
+            aria-label="open menu"
+            edge="start"
+            onClick={toggleOpen}
+          />
+          <LogoWrapper>
+            <LogoLink to="/">WatchTogether</LogoLink>
+          </LogoWrapper>
+          <AppBarLink component={Link} to="/">
+            Home
+          </AppBarLink>
+          <AppBarLink component={Link} to="/app">
+            Watch
+          </AppBarLink>
+        </AppBarWrapper>
+      </StyledAppBar>
+      <MobileMenu open={isOpen} toggleOpen={toggleOpen}></MobileMenu>
+    </>
   );
 };
 

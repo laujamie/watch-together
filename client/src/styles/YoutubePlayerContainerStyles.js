@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TextField, Button, Container, Typography } from '@material-ui/core';
+import { Container } from './pages/shared';
+import { TextField, Button, Typography } from '@material-ui/core';
 
 export const YoutubePlayerContainerHeader = styled(({ variant, ...other }) => (
   <Typography variant="h3" {...other} />
@@ -18,7 +19,6 @@ export const YoutubePlayerContainerText = styled(({ variant, ...other }) => (
 
 export const YoutubePlayerContainerWrapper = styled(Container)`
   text-align: center;
-  padding: 4em 6em;
   margin: 0;
   max-width: 100%;
   color: #0a202d;

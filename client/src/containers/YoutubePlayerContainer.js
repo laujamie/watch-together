@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, Toolbar } from '@material-ui/core';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import YoutubePlayer from '../components/YoutubePlayer';
 import { loadVideo, subscribeToVideoId } from '../services/Socket';
@@ -39,6 +39,7 @@ const YoutubePlayerContainer = () => {
 
   return (
     <YoutubePlayerContainerWrapper>
+      <Toolbar />
       <YoutubePlayerContainerHeader color="primary">
         Welcome to WatchTogether!
       </YoutubePlayerContainerHeader>

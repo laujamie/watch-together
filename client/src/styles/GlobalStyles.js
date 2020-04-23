@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
 const GlobalStyle = createGlobalStyle`
@@ -24,6 +25,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const breakpoints = createBreakpoints({});
+
 export const watchTogetherTheme = responsiveFontSizes(
   createMuiTheme({
     palette: {
@@ -41,6 +44,18 @@ export const watchTogetherTheme = responsiveFontSizes(
     typography: {
       fontFamily: ['"Open Sans"', 'sans-serif'].join(','),
       fontSize: 16
+    },
+    overrides: {
+      MuiToolbar: {
+        gutters: {
+          paddingLeft: '2em',
+          paddingRight: '2em',
+          [breakpoints.up('sm')]: {
+            paddingLeft: '4em',
+            paddingRight: '4em'
+          }
+        }
+      }
     }
   })
 );
