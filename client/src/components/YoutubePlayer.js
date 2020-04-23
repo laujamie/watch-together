@@ -20,6 +20,9 @@ import {
 const YT_API_URI = 'https://www.youtube.com/iframe_api';
 const CHECK_INTERVAL = 1000;
 
+/**
+ * Component for creating a Youtube IFrame player
+ */
 class YoutubePlayer extends React.Component {
   static propTypes = {
     videoId: PropTypes.string.isRequired
@@ -68,6 +71,7 @@ class YoutubePlayer extends React.Component {
       }
       id = tempParams.get('v');
     } catch (err) {
+      // set videoId directly if not a URL
       id = videoId;
     } finally {
     }
