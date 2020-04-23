@@ -59,9 +59,21 @@ class YoutubePlayer extends React.Component {
 
   loadVideo = () => {
     const { videoId } = this.props;
+    let id = '';
+    try {
+      const temp = new URL(videoId);
+      const tempParams = temp.searchParams;
+      if (!tempParams.has('v')) {
+        throw new Error('Missing video id');
+      }
+      id = tempParams.get('v');
+    } catch (err) {
+      id = videoId;
+    } finally {
+    }
 
     this.player = new window.YT.Player(`youtube-player-${videoId}`, {
-      videoId: videoId,
+      videoId: id,
       width: '100%',
       height: '100%',
       events: {
