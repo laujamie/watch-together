@@ -16,21 +16,36 @@ app.use(cors(corsOptions));
 app.use(express.static('../client/build'));
 
 io.on('connection', (socket) => {
-  console.log('connected');
   socket.on('pause', () => {
-    socket.broadcast.emit('pause');
-    console.log('paused');
+    if (socket.curRoom) {
+      socket.broadcast.to(socket.curRoom).emit('pause');
+    }
   });
   socket.on('play', () => {
-    socket.broadcast.emit('play');
-    console.log('played');
+    if (socket.curRoom) {
+      socket.broadcast.to(socket.curRoom).emit('play');
+    }
   });
   socket.on('video id', (videoId) => {
-    socket.broadcast.emit('video id', videoId);
+    if (socket.curRoom) {
+      socket.broadcast.to(socket.curRoom).emit('video id', videoId);
+    }
   });
   socket.on('timestamp', (timestamp) => {
-    console.log(timestamp);
-    io.emit('timestamp', timestamp);
+    if (socket.curRoom) {
+      socket.broadcast.to(socket.curRoom).emit('timestamp', timestamp);
+    }
+  });
+  socket.on('create', (roomId) => {
+    socket.join(roomId, () => {
+      const rooms = Object.keys(socket.rooms);
+      socket.curRoom = rooms[1];
+    });
+  });
+  socket.on('join', (roomId) => {});
+  socket.on('leave', (roomId) => {
+    socket.leave(roomId);
+    socket.curRoom = null;
   });
 });
 

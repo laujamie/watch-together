@@ -14,6 +14,10 @@ export const loadVideo = (videoId) => {
   socket.emit('video id', videoId);
 };
 
+export const createRoom = (roomId) => {
+  socket.emit('create', roomId);
+};
+
 export const subscribeToVideoId = (cb) => {
   socket.on('video id', (videoId) => cb(null, videoId));
 };
