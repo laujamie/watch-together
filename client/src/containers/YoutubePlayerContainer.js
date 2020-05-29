@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import YoutubePlayer from '../components/YoutubePlayer';
 import { loadVideo, subscribeToVideoId } from '../services/Socket';
+import {BrowserRouter as useParams} from 'react-router-dom'
 import {
   YoutubePlayerContainerHeader,
   YoutubePlayerContainerText,
@@ -11,9 +12,10 @@ import {
   YoutubeSubmitButton
 } from '../styles/YoutubePlayerContainerStyles';
 
-const YoutubePlayerContainer = () => {
+const YoutubePlayerContainer = ({state, dispatch}) => {
   const [videoId, setVideoId] = useState('');
   const [liveVideoId, setLiveVideoId] = useState('');
+  let {roomId} = useParams()
 
   useEffect(() => {
     subscribeToVideoId((err, id) => {

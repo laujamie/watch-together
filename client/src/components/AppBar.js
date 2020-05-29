@@ -38,7 +38,7 @@ const MobileMenu = ({ open, toggleOpen }) => {
             <ListItem button component={Link} to="/" disableGutters>
               Home
             </ListItem>
-            <ListItem button component={Link} to="/app" disableGutters>
+            <ListItem button component={Link} to="/rooms" disableGutters>
               Watch
             </ListItem>
           </DrawerLinkWrapper>
@@ -65,7 +65,7 @@ const MainAppBar = () => {
           <AppBarLink component={Link} to="/">
             Home
           </AppBarLink>
-          <AppBarLink component={Link} to="/app">
+          <AppBarLink component={Link} to="/rooms">
             Watch
           </AppBarLink>
           <DrawerButton

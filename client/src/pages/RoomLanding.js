@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 import { Container } from '../styles/pages';
 import { TextField, Button, Grid } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import { generateRoomName } from '../utils/generateWords';
+import { createRoom } from '../services/Socket';
 
 const RoomLanding = () => {
   const initRoom = generateRoomName();
+  const history = useHistory();
   const [roomId, setRoomId] = useState('');
   const handleChange = (e) => {
     setRoomId(e.target.value);
+  };
+  const createNewRoom = () => {
+    let temp = '';
+    if (roomId === '') {
+      createRoom(initRoom);
+      temp = initRoom;
+    } else {
+      createRoom(roomId);
+      temp = roomId;
+    }
+    history.push(`/rooms/${temp}`);
   };
   return (
     <Container>
@@ -23,12 +37,11 @@ const RoomLanding = () => {
         </Grid>
         <Grid container item xs={12} justify="center" spacing={2}>
           <Grid item>
-            <Button color="primary" variant="contained">
-              Create Room
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button color="secondary" variant="contained">
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={createNewRoom}
+            >
               Join Room
             </Button>
           </Grid>

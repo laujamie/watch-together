@@ -20,9 +20,10 @@ function App() {
             <MainAppBar></MainAppBar>
             <Main>
               <Switch>
-                <Route path="/app">
-                  <YoutubePlayerContainer />
-                </Route>
+                <Route
+                  path="/rooms/:roomId"
+                  children={<YoutubePlayerContainer />}
+                ></Route>
                 <Route path="/rooms">
                   <RoomLanding />
                 </Route>
