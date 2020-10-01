@@ -32,29 +32,6 @@ const Home = () => {
           </Grid>
         </Grid>
       </HeroWrapper>
-      <Container style={{ background: '#eee' }}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <Typography variant="h4">Features</Typography>
-          </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
-              <FeatureCard>
-                <CardContent>
-                  <p>This is a test</p>
-                </CardContent>
-              </FeatureCard>
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <FeatureCard>
-                <CardContent>
-                  <p>This is a test</p>
-                </CardContent>
-              </FeatureCard>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Container>
     </div>
   );
 };
