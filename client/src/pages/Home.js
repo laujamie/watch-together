@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  HeroWrapper,
-  FeatureCard,
-  HeroImageWrapper
-} from '../styles/pages/HomeStyles';
-import { Container } from '../styles/pages';
-import { Typography, Button, Grid, Card, CardContent } from '@material-ui/core';
+import { HeroWrapper, HeroImageWrapper } from '../styles/pages/HomeStyles';
+import { Typography, Button, Grid } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -20,7 +15,7 @@ const Home = () => {
             </Typography>
             <Button
               component={Link}
-              to="/app"
+              to="/rooms"
               variant="contained"
               style={{ background: '#E2C044', color: '#393E41' }}
             >

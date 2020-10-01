@@ -5,7 +5,6 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { Home, RoomLanding } from './pages';
 import { Main } from './styles/MainStyles';
-import Footer from './components/Footer';
 import YoutubePlayerContainer from './containers/YoutubePlayerContainer';
 import GlobalStyle, { watchTogetherTheme } from './styles/GlobalStyles';
 import MainAppBar from './components/AppBar';
