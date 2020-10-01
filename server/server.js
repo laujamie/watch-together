@@ -13,6 +13,7 @@ const io = socketIO(server);
 const corsOptions = { origin: process.env.CORS_DOMAIN };
 
 app.use(cors(corsOptions));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 io.on('connection', (socket) => {
   socket.on('pause', () => {
